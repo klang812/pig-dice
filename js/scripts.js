@@ -17,5 +17,8 @@ Player.prototype.play = function(resultNum) {
 }
 
 Player.prototype.hold = function(value) {
-  return this.overallScore += value;
+  this.overallScore += value;
+  if (this.overallScore >= 100) {
+    return "Your score is " + this.overallScore + ". You win! Game over."
+  }
 }

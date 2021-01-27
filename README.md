@@ -17,3 +17,6 @@ Expect(player1.play(1)).toEqual(0);
 Describe: hold(value)
 Test: "It takes a value simulating turnScore, adds to and returns overallScore"
 Expect(player1.hold(22)).toEqual(22)
+
+Test: "It checks the player's overall score for winning value of >= 100 and ends game"
+Expect(player1.hold(100)).toEqual("You win! Game over.");
