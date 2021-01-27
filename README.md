@@ -13,3 +13,7 @@ Expect(player1.play(3)).toEqual(3);
 
 Test: "It takes a value === 1 simulating a rollDie of that value and branches method to reset turnScore to 0"
 Expect(player1.play(1)).toEqual(0);
+
+Describe: hold(value)
+Test: "It takes a value simulating turnScore, adds to and returns overallScore"
+Expect(player1.hold(22)).toEqual(22)

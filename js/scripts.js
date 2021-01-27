@@ -15,3 +15,7 @@ Player.prototype.play = function(resultNum) {
     return this.turnScore = 0; 
   }
 }
+
+Player.prototype.hold = function(value) {
+  return this.overallScore += value;
+}

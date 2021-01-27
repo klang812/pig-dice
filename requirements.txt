@@ -26,7 +26,6 @@ play {
   else
     turn score = 0
     "Your turn is over, next player's turn"
-  endGame()
 }
 
 hold {
