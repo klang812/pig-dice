@@ -1,0 +1,42 @@
+WEBSITE THAT ALLOWS 2 PLAYERS TO ROLL DICE FOR EACH PLAYER (IF DIE !== 1 && ==={2,3,4,5,6} add score) (if die === 1 score.toEqual(0) for that round)
+if player decides to hold, player keeps total and adds to total score.
+first player to total score.toEqual>=100, player wins! game over
+
+turn score.toEqual()
+
+
+Randomize which player should start?
+
+--- Objects ---
+Player() {
+  Name
+  Total score = 0
+  Turn score = 0
+}
+
+--- Behaviors ---
+rollDie {
+  return a random value from 1 - 6
+}
+
+play {
+  rollDie()
+  if !== 1
+    player's turn score += die value
+  else
+    turn score = 0
+    "Your turn is over, next player's turn"
+  endGame()
+}
+
+hold {
+  turn score gets added to total score
+  "Next player's turn"
+  turn score = 0
+  endGame()
+}
+
+end game {
+  checks player's total score
+  if player to hit 100 or more wins
+}
