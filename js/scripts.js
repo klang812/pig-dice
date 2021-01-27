@@ -7,3 +7,7 @@ function Player(nameFromUser) {
 Player.prototype.rollDie = function() {
   return Math.floor((Math.random() * 6) + 1);
 }
+
+Player.prototype.play = function(resultNum) {
+  return this.turnScore += resultNum; 
+}
