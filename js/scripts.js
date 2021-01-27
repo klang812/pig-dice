@@ -9,5 +9,9 @@ Player.prototype.rollDie = function() {
 }
 
 Player.prototype.play = function(resultNum) {
-  return this.turnScore += resultNum; 
+  if (resultNum !== 1) {
+    return this.turnScore += resultNum;
+  } else {
+    return this.turnScore = 0; 
+  }
 }
