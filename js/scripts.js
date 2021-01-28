@@ -14,39 +14,54 @@ Player.prototype.play = function() {
   if (currentRoll !== 1) {
     return this.turnScore += currentRoll;
   } else {
-    return this.turnScore = 0; 
+    this.turnScore = 0;
+    return this.endTurn(); 
   }
 }
 
 Player.prototype.hold = function() {
-  this.overallScore += this.turnScore;
+  const nextPlayer = this.endTurn();
   this.turnScore = 0;
   if (this.overallScore >= 100) {
     return "Your score is " + this.overallScore + ". You win, " + this.name + "! Game over."
+  } else {
+    return nextPlayer;
   }
 }
 
-// Business logic for game initialization
-function initializeGame(name1, name2) {
-  let player1 = new Player(name1);
-  let player2 = new Player(name2);
-  const players = [player1, player2];
-  const startingPlayer = Math.floor(Math.random() * players.length);
-  return players[startingPlayer].name;
+Player.prototype.endTurn = function() {
+  this.overallScore += this.turnScore
+  if (currentPlayer === player1) {
+    currentPlayer = player2;
+  } else {
+    currentPlayer = player1;
+  }
+  return currentPlayer.name;
 }
 
+// Business logic for game initialization
+let player1;
+let player2;
+let currentPlayer;
+function initializeGame(name1, name2) {
+  player1 = new Player(name1);
+  player2 = new Player(name2);
+  const players = [player1, player2];
+  const startingPlayerIndex = Math.floor(Math.random() * players.length);
+  currentPlayer = players[startingPlayerIndex];
+  return currentPlayer.name;
+}
+
+// User Interface Logic
 $(document).ready(function() {
   $("form#playerNames").submit(function(event) {
     event.preventDefault();
     const playerName1 = $("input#playerName1").val();
     const playerName2 = $("input#playerName2").val();
-    let player1 = new Player(playerName1);
-    let player2 = new Player(playerName2);
-    let players = [player1, player2];
     $("form#playerNames").hide();
     $("div#gameBoard").show();
+    $("#currentPlayer").text(initializeGame(playerName1, playerName2));
     $("#player1").text(player1.name);
     $("#player2").text(player2.name);
-
   });
 });
