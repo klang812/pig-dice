@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,19 +10,24 @@
   <script src="js/scripts.js"></script>
   <title>Pig-Dice</title>
 </head>
+
 <body>
   <div class="container">
-    <h1>Pig Diiiiiiiice!!!</h1>
-    <form>
-      <div class="form-group"> 
-        <label for="playerName1">Player 1, what is your name?</label>
-        <input type="text" id="playerName1">
-      </div>
-      <div class="form-group">
-        <label for="playerName2">Player 2, what is your name?</label>
-        <input type="text" id="playerName2">
-      </div>
-    </form>
-  </div>  
+    <div class="jumbotron">
+      <h1>Pig Diiiiiiiice!!!</h1>
+      <form id="playerNames">
+        <div class="form-group">
+          <label for="playerName1">Player 1, what is your name?</label>
+          <input type="text" id="playerName1">
+        </div>
+        <div class="form-group">
+          <label for="playerName2">Player 2, what is your name?</label>
+          <input type="text" id="playerName2">
+        </div>
+        <button type="submit" class="btn-primary">Let's Play!!</button>
+      </form>
+    </div>
+  </div>
 </body>
+
 </html>

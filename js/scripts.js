@@ -24,3 +24,11 @@ Player.prototype.hold = function() {
     return "Your score is " + this.overallScore + ". You win, " + this.name + "! Game over."
   }
 }
+
+$(document).ready(function() {
+  $("form#playerNames").submit(function(event) {
+    event.preventDefault();
+    const playerName1 = $("input#playerName1").val();
+    const playerName2 = $("input#playerName2").val();
+  });
+});
