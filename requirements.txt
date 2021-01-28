@@ -35,6 +35,20 @@ hold {
   endGame()
 }
 
+initializeGame {
+  construct our two player object with the names provided
+  return a randomized player object and display as starting turn
+}
+
+endTurn {
+  will be called by play() when die rolls return 1 and turnScore = 0
+    turnScore += overallScore
+  will be called by hold() when activated and turnScore != 0
+    turnScore += overallScore
+  in both cases, turn ends and "currentPlayer" changes to other player, we can make that change in this behavior and display in browser
+  return currentPlayer;
+}
+
 end game {
   checks player's total score
   if player to hit 100 or more wins

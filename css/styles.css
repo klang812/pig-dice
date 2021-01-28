@@ -1,8 +1,16 @@
-h1 {
-  margin-bottom: 30px;
+* {
+  border: solid 1px #000000;
+}
+
+#playerNames {
+  margin-top: 30px;
 }
 
 .jumbotron {
   text-align: center;
   margin-top: 60px;
+}
+
+#gameBoard {
+  display: none;
 }

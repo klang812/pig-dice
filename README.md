@@ -20,3 +20,7 @@ Expect(player1.hold(22)).toEqual(22)
 
 Test: "It checks the player's overall score for winning value of >= 100 and ends game"
 Expect(player1.hold(100)).toEqual("You win! Game over.");
+
+Describe: initializeGame()
+Test: "It instantiates 2 player objects from inputted names and returns a randomized starting player."
+Expect(initializeGame("Player 1", "Player 2")).toEqual("Player 1" || "Player 2")
