@@ -21,6 +21,6 @@ Player.prototype.hold = function() {
   this.overallScore += this.turnScore;
   this.turnScore = 0;
   if (this.overallScore >= 100) {
-    return "Your score is " + this.overallScore + ". You win! Game over."
+    return "Your score is " + this.overallScore + ". You win, " + this.name + "! Game over."
   }
 }
