@@ -9,19 +9,18 @@ Player.prototype.rollDie = function() {
   return Math.floor((Math.random() * 6) + 1);
 }
 
+let currentRoll;
 Player.prototype.play = function() {
-  const currentRoll = this.rollDie();
+  currentRoll = this.rollDie();
   if (currentRoll !== 1) {
     return this.turnScore += currentRoll;
   } else {
-    this.turnScore = 0;
     return this.endTurn(); 
   }
 }
 
 Player.prototype.hold = function() {
   const nextPlayer = this.endTurn();
-  this.turnScore = 0;
   if (this.overallScore >= 100) {
     return "Your score is " + this.overallScore + ". You win, " + this.name + "! Game over."
   } else {
@@ -30,7 +29,8 @@ Player.prototype.hold = function() {
 }
 
 Player.prototype.endTurn = function() {
-  this.overallScore += this.turnScore
+  this.overallScore += this.turnScore;
+  this.turnScore = 0;
   if (currentPlayer === player1) {
     currentPlayer = player2;
   } else {
@@ -53,6 +53,7 @@ function initializeGame(name1, name2) {
 }
 
 // User Interface Logic
+
 $(document).ready(function() {
   $("form#playerNames").submit(function(event) {
     event.preventDefault();
@@ -60,8 +61,31 @@ $(document).ready(function() {
     const playerName2 = $("input#playerName2").val();
     $("form#playerNames").hide();
     $("div#gameBoard").show();
-    $("#currentPlayer").text(initializeGame(playerName1, playerName2));
+    const startingPlayer = initializeGame(playerName1, playerName2);
+    $("#currentPlayer").text(startingPlayer);
     $("#player1").text(player1.name);
     $("#player2").text(player2.name);
+  });
+  $("#play1Roll").click(function() {
+    player1.play();
+    $("#play1Turn").text(player1.turnScore);
+    $("#dieRoll").text(currentRoll);
+    $("#currentPlayer").text(currentPlayer.name);
+  });
+  $("#play1Hold").click(function() {
+    player1.hold();
+    $("#play1Overall").text(player1.overallScore);
+    $("#currentPlayer").text(currentPlayer.name);
+  });
+  $("#play2Roll").click(function() {
+    player2.play();
+    $("#play2Turn").text(player2.turnScore);
+    $("#dieRoll").text(currentRoll);
+    $("#currentPlayer").text(currentPlayer.name);
+  });
+  $("#play2Hold").click(function() {
+    player2.hold();
+    $("#play2Overall").text(player2.overallScore);
+    $("#currentPlayer").text(currentPlayer.name);
   });
 });
